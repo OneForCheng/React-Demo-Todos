@@ -6,10 +6,10 @@ import "./style.sass";
 const Home = () => {
   return (<div>
     <h1>
-Hello!
+      Hello!
 
     </h1>
-    <img src={pikapika}/>
+    <img src={pikapika} />
   </div>);
 };
 
