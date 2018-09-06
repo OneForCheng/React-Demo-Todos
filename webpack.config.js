@@ -13,7 +13,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-    entry: "./src/index.js",
+    entry: "./src/app.js",
     output: {
         path: path.resolve(__dirname, "dist"), //Output Directory
         filename: "bundle.js", //Output file
@@ -41,6 +41,14 @@ module.exports = {
                 options: {
                     name: 'assets/image/[name].[ext]?[hash]'
                 }
+            },
+            {
+              test: /\.css$/,
+              use: [{
+                loader: 'style-loader'
+              }, {
+                loader: 'css-loader'
+              }]
             },
             {
                 test: /\.(scss|sass)$/,
