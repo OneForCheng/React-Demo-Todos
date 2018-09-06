@@ -4,11 +4,27 @@ class AppView {
     this.displayType = "All";
   }
 
-  setDisplay(displayType) {
-    this.displayType = displayType;
+
+  append(text) {
+    let note = '<li>';
+    note += '<div class="view">';
+    note += '<input class="toggle" type="checkbox">';
+    note += '<label>' + text + '</label>';
+    note += '<button class="destroy"></button>';
+    note += '</div>';
+    note += '<input class="edit" value="' + text + '">';
+    note += '</li>';
+    $(".todo-list").append(note);
+    $(".new-todo").val('');
+    this.render();
   }
 
-  display() {
+  setDisplay(displayType) {
+    this.displayType = displayType;
+    this.render();
+  }
+
+  render() {
     if (this.displayType === "All") {
       $('.todo-list li').each(function () {
         if ($(this).hasClass('hidden')) {
@@ -82,7 +98,7 @@ class AppView {
         $(this).remove();
       }
     });
-    this.display();
+    this.render();
   }
 }
 
@@ -96,9 +112,7 @@ var appView = new AppView();
     var theEvent = e || window.event;
     var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
     if (code == 13) {
-      append($(".new-todo").val());
-      $(".new-todo").val('');
-      appView.display();
+      appView.append($(".new-todo").val());
     }
   });
 
@@ -108,12 +122,12 @@ var appView = new AppView();
     } else {
       $(this).closest("li").removeClass('completed');
     }
-    appView.display();
+    appView.render();
   });
 
   $(".todo-list").on('click', '.destroy', function () {
     $(this).closest("li").remove();
-    appView.display();
+    appView.render();
   });
 
   $('#toggle-all').click(function (event) {
@@ -123,6 +137,7 @@ var appView = new AppView();
       appView.cancelAll();
     }
   });
+
   $(".filters a").click(function (event) {
     $(".filters a").each(function () {
       if ($(this).hasClass('selected')) {
@@ -131,7 +146,6 @@ var appView = new AppView();
     });
     $(this).addClass("selected");
     appView.setDisplay($(this).text());
-    appView.display();
   });
 
   $(".clear-completed").click(function () {
@@ -150,16 +164,3 @@ var appView = new AppView();
   });
 
 })(window);
-
-
-function append(text) {
-  let note = '<li>';
-  note += '<div class="view">';
-  note += '<input class="toggle" type="checkbox">';
-  note += '<label>' + text + '</label>';
-  note += '<button class="destroy"></button>';
-  note += '</div>';
-  note += '<input class="edit" value="' + text + '">';
-  note += '</li>';
-  $(".todo-list").append(note);
-}
