@@ -1,3 +1,5 @@
+window.jQuery = window.$ = require('jquery');
+
 class AppView {
 
   constructor() {
