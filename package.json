@@ -4,8 +4,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "test": "mocha ./test/{,**/}*.spec.js",
-    "mocha": "mocha"
+    "test": "mocha --compilers js:babel-core/register ./test/{,**/}*.spec.js",
+    "mocha": "mocha --compilers js:babel-core/register"
   },
   "author": "",
   "license": "ISC",
