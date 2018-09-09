@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Todo from "./todo";
 
-const TodoList = ({ todos, allCompleted, toggleAll }) => {
+export const TodoList = ({ todos, allCompleted, toggleAll }) => {
   return (
     <section className="main">
       <input

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const ENTER_KEY_CODE = 13;
-const Header = ({ addTodo }) => {
+export const Header = ({ addTodo }) => {
   return (
     <header className="header">
       <h1>todos</h1>
