@@ -1,13 +1,4 @@
-const initState = [{
-    id: 1,
-    label: "Java",
-    completed: true
-  },
-  {
-    id: 2,
-    label: "JavaScript"
-  },
-];
+const initState = [];
 
 const todos = (state = initState, action) => {
   let clone, todo;
