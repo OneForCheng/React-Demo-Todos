@@ -37,7 +37,7 @@ class Todo extends Component{
         return(<li className={clazz}>
         <div className="view">
             <input className="toggle" type="checkbox" checked={completed} onChange={() => toggleTodo(id)}/>
-             <label onDoubleClick={this.toggleEditing}>{label}</label>
+             <label onDoubleClick={() => this.toggleEditing()}>{label}</label>
             <button className="destroy" onClick={() => removeTodo(id)}></button>
         </div>
         <input className="edit" defaultValue={label} onKeyPress={(e) => this.handleKeyPress(e, id)}/>
