@@ -4,7 +4,6 @@ import React, {
 
 import 'todomvc-common/base.css'
 import 'todomvc-app-css/index.css'
-import 'todomvc-common/base'
 
 import Header from './components/header'
 import Footer from './components/footer'
