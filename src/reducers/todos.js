@@ -6,7 +6,10 @@ const todos = (state = initState, action) => {
     case "ADD_TODO":
       clone = [...state];
       clone.push({
-        id: state.length === 0 ? 1 : Math.max.apply(null, state.map(todo => todo.id)) + 1,
+        id:
+          state.length === 0
+            ? 1
+            : Math.max.apply(null, state.map(todo => todo.id)) + 1,
         label: action.label
       });
       return clone;
@@ -37,6 +40,6 @@ const todos = (state = initState, action) => {
       return clone;
   }
   return state;
-}
+};
 
 export default todos;

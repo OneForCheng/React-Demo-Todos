@@ -1,4 +1,5 @@
-const initState = [{
+const initState = [
+  {
     label: "All",
     selected: true
   },
@@ -9,7 +10,7 @@ const initState = [{
   {
     label: "Active",
     selected: false
-  },
+  }
 ];
 
 const filters = (state = initState, action) => {
@@ -30,6 +31,6 @@ const filters = (state = initState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default filters;
