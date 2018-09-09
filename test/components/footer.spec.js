@@ -59,12 +59,11 @@ describe("test Filters component", function() {
           selected: false
         }
       ],
-      switchFilter: ()=>{}
+      switchFilter: () => {}
     };
 
     const component = shallow(<Filters {...props} />);
     expect(component.find("li").length).to.eql(3);
-
   });
 
   it("should invoke all switchFilter when selected label is all", function() {
@@ -88,9 +87,8 @@ describe("test Filters component", function() {
     };
 
     const component = shallow(<Filters {...props} />);
-    
-    component.find("a.selected").simulate('click');
-    expect(clickSpy.calledWith("All")).to.eql(true);
 
+    component.find("a.selected").simulate("click");
+    expect(clickSpy.calledWith("All")).to.eql(true);
   });
 });
