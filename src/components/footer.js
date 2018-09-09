@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const Filters = ({ filters, switchFilter }) => {
+export const Filters = ({ filters, switchFilter }) => {
   return (
     <ul className="filters">
       {filters.map(({ label, selected }, index) => {
@@ -21,7 +21,7 @@ const Filters = ({ filters, switchFilter }) => {
   );
 };
 
-const ClearBtn = ({ isShowClearBtn, clearCompleted }) => {
+export const ClearBtn = ({ isShowClearBtn, clearCompleted }) => {
   if (isShowClearBtn) {
     return (
       <button className="clear-completed" onClick={clearCompleted}>
@@ -32,7 +32,7 @@ const ClearBtn = ({ isShowClearBtn, clearCompleted }) => {
   return null;
 };
 
-const Footer = props => {
+export const Footer = props => {
   return (
     <footer className="footer">
       <span className="todo-count">
