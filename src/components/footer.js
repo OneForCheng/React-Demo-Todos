@@ -33,15 +33,13 @@ export const ClearBtn = ({ isShowClearBtn, clearCompleted }) => {
 };
 
 export const Footer = props => {
-  return (
-    <footer className="footer">
+  return <footer className="footer">
       <span className="todo-count">
-        <strong> {props.activeCount} </strong> item left
+        <strong>{props.activeCount}</strong> item left
       </span>
       <Filters {...props} />
       <ClearBtn {...props} />
-    </footer>
-  );
+    </footer>;
 };
 
 const mapStateToProps = ({ todos, filters }) => ({
