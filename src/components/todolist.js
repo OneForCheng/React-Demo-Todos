@@ -44,6 +44,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: "TOGGLE_ALL",
       data: checked
+    
     })
 });
 

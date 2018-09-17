@@ -9,7 +9,7 @@ const todos = (state = initState, action) => {
         id:
           state.length === 0
             ? 1
-            : Math.max.apply(null, state.map(todo => todo.id)) + 1,
+            : Math.max(...state.map(todo => todo.id)) + 1,
         label: action.label
       });
       return clone;
