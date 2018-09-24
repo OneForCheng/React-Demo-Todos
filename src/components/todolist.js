@@ -1,8 +1,9 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
 import Todo from "./todo";
 
-export const TodoList = ({ todos, allCompleted, toggleAll }) => {
+export const TodoList = ({ todos, allCompleted, toggleAll }: {todos: any, allCompleted: boolean, toggleAll: (checked: boolean) => void}) => {
   return (
     <section className="main">
       <input

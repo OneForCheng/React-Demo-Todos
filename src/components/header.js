@@ -1,8 +1,9 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
 
 const ENTER_KEY_CODE = 13;
-export const Header = ({ addTodo }) => {
+export const Header = ({ addTodo }: {addTodo: (label: string) => void}) => {
   return (
     <header className="header">
       <h1>todos</h1>

@@ -1,8 +1,22 @@
+// @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-export class Todo extends Component {
-  constructor(props) {
+type Props = {
+  label: string, 
+  completed: boolean, 
+  id: number, 
+  toggleTodo: (id: number) => void,
+  removeTodo: (id: number) => void,
+  updateTodo: (id: number, label: string) => void
+}
+
+type State = {
+  editing: boolean
+}
+
+export class Todo extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       editing: false
@@ -14,7 +28,7 @@ export class Todo extends Component {
     this.setState({ editing });
   }
 
-  handleKeyPress(e, id) {
+  handleKeyPress(e: any, id: number) {
     if (e.charCode === 13) {
       this.toggleEditing();
       const label = e.target.value.trim();

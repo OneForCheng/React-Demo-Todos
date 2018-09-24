@@ -1,7 +1,32 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
 
-export const Filters = ({ filters, switchFilter }) => {
+type FilterType = {
+  label: string,
+  selected?: boolean
+}
+
+type FiltersPropsType = {
+  filters: Array<FilterType>,
+  switchFilter: (label: string) => void
+}
+
+type CleanBtnPropsType = { 
+  isShowClearBtn: boolean, 
+  clearCompleted: () => void
+}
+
+type FooterPropsType = {
+  filters: Array<FilterType>,
+  switchFilter: (label: string) => void,
+  isShowClearBtn: boolean, 
+  clearCompleted: () => void,
+  activeCount: boolean
+}
+
+
+export const Filters = ({ filters, switchFilter }: FiltersPropsType) => {
   return (
     <ul className="filters">
       {filters.map(({ label, selected }, index) => {
@@ -21,7 +46,7 @@ export const Filters = ({ filters, switchFilter }) => {
   );
 };
 
-export const ClearBtn = ({ isShowClearBtn, clearCompleted }) => {
+export const ClearBtn = ({ isShowClearBtn, clearCompleted }: CleanBtnPropsType) => {
   if (isShowClearBtn) {
     return (
       <button className="clear-completed" onClick={clearCompleted}>
@@ -32,7 +57,7 @@ export const ClearBtn = ({ isShowClearBtn, clearCompleted }) => {
   return null;
 };
 
-export const Footer = props => {
+export const Footer = (props: FooterPropsType) => {
   return <footer className="footer">
       <span className="todo-count">
         <strong>{props.activeCount}</strong> item left
