@@ -25,7 +25,7 @@ describe("test TodoList component", function() {
     };
     const component = shallow(<TodoList {...props} />);
     expect(component.find("input").prop("checked")).to.eql(true);
-    expect(component.find("Connect(Todo)").length).to.eql(2);
+    expect(component.find("Connect(ReduxContainer)").length).to.eql(2);
   });
 
   it("should invoke toggleAll when the checkbox change checked state", function() {
