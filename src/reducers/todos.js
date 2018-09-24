@@ -1,6 +1,7 @@
+// @flow
 const initState = [];
 
-const todos = (state = initState, action) => {
+const todos = (state: any = initState, action: any) => {
   let clone, todo;
   switch (action.type) {
     case "ADD_TODO":

@@ -1,3 +1,4 @@
+// @flow
 const initState = [
   {
     label: "All",
@@ -13,11 +14,14 @@ const initState = [
   }
 ];
 
-const filters = (state = initState, action) => {
-  switch (action.type) {
-    case "SWITCH_FILTER":
-      return state.map(item => {
-        if (item.label === action.data) {
+type State = Array<{
+  label: string,
+  selected: boolean
+}>;
+
+const getFilterResults = (state: State, label: string): State => {
+  return state.map(item => {
+        if (item.label === label) {
           return {
             label: item.label,
             selected: true
@@ -28,6 +32,12 @@ const filters = (state = initState, action) => {
           selected: false
         };
       });
+}
+
+const filters = (state: State = initState, action: any) => {
+  switch (action.type) {
+    case "SWITCH_FILTER":
+      return getFilterResults(state, action.data);
     default:
       return state;
   }
