@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import ReduxContainer from './reduxContainer';
+import * as actionCreators from '../actions/todoActions'
 
 type Props = {
   label: string, 
@@ -71,28 +72,4 @@ export class Todo extends Component<Props, State> {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  toggleTodo: id =>
-    dispatch({
-      type: "TOGGLE_TODO",
-      id
-    }),
-  removeTodo: id =>
-    dispatch({
-      type: "REMOVE_TODO",
-      id
-    }),
-  updateTodo: (id, label) =>
-    dispatch({
-      type: "UPDATE_TODO",
-      data: {
-        id,
-        label
-      }
-    })
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Todo);
+export default ReduxContainer(Todo, mapStateToProps, actionCreators);

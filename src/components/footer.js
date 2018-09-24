@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
-import { connect } from "react-redux";
+import ReduxContainer from './reduxContainer';
+import * as actionCreators from '../actions/footerActions'
 
 type FilterType = {
   label: string,
@@ -73,19 +74,4 @@ const mapStateToProps = ({ todos, filters }) => ({
   isShowClearBtn: todos.some(todo => todo.completed)
 });
 
-const mapDispatchToProps = dispatch => ({
-  clearCompleted: () =>
-    dispatch({
-      type: "CLEAR_COMPLETED"
-    }),
-  switchFilter: data =>
-    dispatch({
-      type: "SWITCH_FILTER",
-      data
-    })
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Footer);
+export default ReduxContainer(Footer, mapStateToProps, actionCreators);

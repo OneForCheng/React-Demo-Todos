@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
-import { connect } from "react-redux";
+import ReduxContainer from './reduxContainer';
+import * as actionCreators from '../actions/todoListActions'
 import Todo from "./todo";
 
 export const TodoList = ({ todos, allCompleted, toggleAll }: {todos: any, allCompleted: boolean, toggleAll: (checked: boolean) => void}) => {
@@ -40,16 +41,4 @@ const mapStateToProps = ({ todos, filters }) => ({
   todos: getVisibleTodos(todos, filters)
 });
 
-const mapDispatchToProps = dispatch => ({
-  toggleAll: checked =>
-    dispatch({
-      type: "TOGGLE_ALL",
-      data: checked
-    
-    })
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList);
+export default ReduxContainer(TodoList, mapStateToProps, actionCreators);

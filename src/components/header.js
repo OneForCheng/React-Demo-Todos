@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
-import { connect } from "react-redux";
+import ReduxContainer from './reduxContainer';
+import * as actionCreators from '../actions/headerActions'
 
 const ENTER_KEY_CODE = 13;
 export const Header = ({ addTodo }: {addTodo: (label: string) => void}) => {
@@ -25,11 +26,4 @@ export const Header = ({ addTodo }: {addTodo: (label: string) => void}) => {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  addTodo: label => dispatch({ type: "ADD_TODO", label })
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default ReduxContainer(Header, mapStateToProps, actionCreators);
